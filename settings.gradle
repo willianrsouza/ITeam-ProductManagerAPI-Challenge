@@ -1,2 +1,6 @@
 rootProject.name = 'product-manager-api'
+include 'core'
+include 'usecase'
+include 'application'
+include 'infrastructure'
 
