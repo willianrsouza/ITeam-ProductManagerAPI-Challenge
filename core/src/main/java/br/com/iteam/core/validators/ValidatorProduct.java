@@ -2,14 +2,12 @@ package br.com.iteam.core.validators;
 
 import br.com.fluentvalidator.AbstractValidator;
 import br.com.iteam.core.domain.Product;
+import br.com.iteam.core.domain.enums.ProductCategories;
 
 import java.math.BigDecimal;
 import java.util.Arrays;
-import java.util.List;
 
 public class ValidatorProduct extends AbstractValidator<Product> {
-    private static final List<String> VALID_CATEGORIES = Arrays.asList("Eletrônicos", "Roupas", "Alimentos");
-
     @Override
     public void rules() {
         setPropertyOnContext("product");
@@ -34,15 +32,28 @@ public class ValidatorProduct extends AbstractValidator<Product> {
 
 
         ruleFor(Product::getCategory)
-                .must(category -> category != null && VALID_CATEGORIES.contains(category.getName()))
-                    .withMessage("The product category must be one of the valid categories (e.g., 'Eletrônicos', 'Roupas', 'Alimentos')")
-                    .withFieldName("category")
-                    .withCode("product.category.invalid");
+                .must(category -> category != null && isValidCategory(category.getName()))
+                .withMessage("The product category must be one of the valid categories: " + getValidCategories())
+                .withFieldName("category")
+                .withCode("product.category.invalid");
+
 
         ruleFor(Product::getStock)
                 .must(stock -> stock != null && stock >= 0 && stock <= 10000)
                     .withMessage("The product stock must be between 0 and 10,000")
                     .withFieldName("stock")
                     .withCode("product.stock.invalid.range");
+    }
+
+    private boolean isValidCategory(String categoryName) {
+        return Arrays.stream(ProductCategories.values())
+                .anyMatch(validCategory -> validCategory.name().equalsIgnoreCase(categoryName));
+    }
+
+    private String getValidCategories() {
+        return Arrays.stream(ProductCategories.values())
+                .map(Enum::name)
+                .toList()
+                .toString();
     }
 }
