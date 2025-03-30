@@ -11,6 +11,8 @@ import br.com.iteam.infrastructure.validators.CategoryValidator;
 import br.com.iteam.infrastructure.validators.ProductValidator;
 import org.springframework.stereotype.Service;
 
+import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
+
 @Service
 public class CreateProductGatewayImpl implements CreateProductGateway {
 
@@ -28,6 +30,8 @@ public class CreateProductGatewayImpl implements CreateProductGateway {
 
     @Override
     public Product create(Product product) {
+        serviceLog.info("Starting creating product::CreateProductGatewayImpl");
+
         ValidationResult categoryValidationResult = categoryValidator.validate(product.getCategory());
 
         if (!categoryValidationResult.isValid()) {
@@ -42,6 +46,8 @@ public class CreateProductGatewayImpl implements CreateProductGateway {
 
         ProductEntity productToEntityMapped = productMapper.toProductEntity(product);
         ProductEntity productSaved = productRepository.save(productToEntityMapped);
+
+        serviceLog.info("Product created successfully::CreateProductGatewayImpl");
 
         return productMapper.toProduct(productSaved);
     }

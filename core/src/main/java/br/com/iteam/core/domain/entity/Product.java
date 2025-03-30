@@ -6,6 +6,13 @@ import java.util.UUID;
 
 public class Product {
     private UUID id;
+    private String name;
+    private String description;
+    private BigDecimal price;
+    private Category category;
+    private Integer stock;
+    private OffsetDateTime createdAt;
+    private OffsetDateTime updatedAt;
 
     public Product(UUID id, String name, String description, BigDecimal price, Category category, Integer stock, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
         this.id = id;
@@ -17,14 +24,6 @@ public class Product {
         this.createdAt = createdAt;
         this.updatedAt = updatedAt;
     }
-
-    private String name;
-    private String description;
-    private BigDecimal price;
-    private Category category;
-    private Integer stock;
-    final OffsetDateTime createdAt;
-    final OffsetDateTime updatedAt;
 
     public UUID getId() {
         return id;
