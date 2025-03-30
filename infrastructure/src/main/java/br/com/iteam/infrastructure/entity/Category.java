@@ -1,4 +1,4 @@
-package br.com.iteam.entity;
+package br.com.iteam.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
