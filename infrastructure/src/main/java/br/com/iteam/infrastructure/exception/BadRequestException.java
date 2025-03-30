@@ -1,4 +1,4 @@
-package br.com.iteam.application.exception;
+package br.com.iteam.infrastructure.exception;
 
 public class BadRequestException extends Exception {
 

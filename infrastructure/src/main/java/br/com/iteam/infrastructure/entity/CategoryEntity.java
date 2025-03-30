@@ -12,9 +12,10 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "categories")
-public class Category {
+public class CategoryEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private UUID id;
 
     @Column(name = "name", nullable = false, unique = true)
@@ -26,6 +27,12 @@ public class Category {
     @Column(name = "updated_at", nullable = false)
     private OffsetDateTime updatedAt = OffsetDateTime.now();
 
-    @OneToMany(mappedBy = "category")
-    private List<Product> products;
+    @OneToMany(mappedBy = "categoryEntity")
+    private List<ProductEntity> productEntities;
+
+    public CategoryEntity(String name, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
+        this.name = name;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
 }

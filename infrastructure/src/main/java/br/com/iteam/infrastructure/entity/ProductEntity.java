@@ -12,14 +12,14 @@ import java.util.UUID;
 @NoArgsConstructor
 @Entity
 @Table(name = "products")
-public class Product {
+public class ProductEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
     @ManyToOne
     @JoinColumn(name = "category_id", nullable = false)
-    private Category category;
+    private CategoryEntity categoryEntity;
 
     @Column(name = "name", nullable = false)
     private String name;

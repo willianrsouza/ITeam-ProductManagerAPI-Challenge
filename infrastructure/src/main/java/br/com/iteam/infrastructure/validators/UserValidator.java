@@ -1,4 +1,4 @@
-package br.com.iteam.application.validators;
+package br.com.iteam.infrastructure.validators;
 
 import br.com.fluentvalidator.AbstractValidator;
 import br.com.iteam.core.domain.entity.User;

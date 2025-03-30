@@ -1,11 +1,14 @@
-package br.com.iteam.application.validators;
+package br.com.iteam.infrastructure.validators;
 
 import br.com.fluentvalidator.AbstractValidator;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.enums.ProductCategories;
+import org.springframework.stereotype.Component;
+
 import java.util.Arrays;
 import java.util.stream.Collectors;
 
+@Component
 public class CategoryValidator extends AbstractValidator<Category> {
     @Override
     public void rules() {
