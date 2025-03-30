@@ -2,6 +2,7 @@ package br.com.iteam.infrastructure.mapper;
 
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.enums.CategoryName;
+import br.com.iteam.infrastructure.dto.request.CreateCategoryRequest;
 import br.com.iteam.infrastructure.entity.CategoryEntity;
 import org.springframework.stereotype.Component;
 
@@ -22,6 +23,12 @@ public class CategoryMapper {
                 CategoryName.valueOf(categoryEntity.getName()),
                 categoryEntity.getCreatedAt(),
                 categoryEntity.getUpdatedAt()
+        );
+    }
+
+    public Category toCategory(CreateCategoryRequest createCategoryRequest) {
+        return new Category(
+                createCategoryRequest.name()
         );
     }
 }

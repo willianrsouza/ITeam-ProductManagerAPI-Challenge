@@ -17,6 +17,13 @@ public class Category {
         this.updatedAt = updatedAt;
     }
 
+    public Category(CategoryName name) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.createdAt = OffsetDateTime.now();
+        this.updatedAt = OffsetDateTime.now();
+    }
+
     public UUID getId() {
         return id;
     }

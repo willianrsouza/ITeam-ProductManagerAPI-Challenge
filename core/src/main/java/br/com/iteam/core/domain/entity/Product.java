@@ -25,6 +25,17 @@ public class Product {
         this.updatedAt = updatedAt;
     }
 
+    public Product(String name, String description, BigDecimal price, Category category, Integer stock) {
+        this.id = UUID.randomUUID();
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.stock = stock;
+        this.createdAt = OffsetDateTime.now();
+        this.updatedAt = OffsetDateTime.now();
+    }
+
     public UUID getId() {
         return id;
     }

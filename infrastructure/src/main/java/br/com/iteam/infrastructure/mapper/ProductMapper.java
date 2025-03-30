@@ -2,6 +2,7 @@ package br.com.iteam.infrastructure.mapper;
 
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
+import br.com.iteam.infrastructure.dto.request.CreateProductRequest;
 import br.com.iteam.infrastructure.entity.CategoryEntity;
 import br.com.iteam.infrastructure.entity.ProductEntity;
 import org.springframework.stereotype.Component;
@@ -41,6 +42,18 @@ public class ProductMapper {
                 productEntity.getStock(),
                 productEntity.getCreatedAt(),
                 productEntity.getUpdatedAt()
+        );
+    }
+
+    public Product toProduct(CreateProductRequest productRequest) {
+        Category category = categoryMapper.toCategory(productRequest.category());
+
+        return new Product(
+                productRequest.name(),
+                productRequest.description(),
+                productRequest.price(),
+                category,
+                productRequest.stock()
         );
     }
 }
