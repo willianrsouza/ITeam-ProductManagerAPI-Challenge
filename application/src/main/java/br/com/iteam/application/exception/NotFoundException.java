@@ -1,4 +1,4 @@
-package br.com.iteam.core.exception;
+package br.com.iteam.application.exception;
 
 public class NotFoundException extends Exception {
 

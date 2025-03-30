@@ -1,7 +1,7 @@
-package br.com.iteam.usecase.Product;
+package br.com.iteam.application.gateway;
 
 import br.com.iteam.core.domain.entity.Product;
 
-public interface CreateProduct {
+public interface CreateProductGateway {
     Product create(Product product);
 }

@@ -1,4 +1,4 @@
-package br.com.iteam.core.domain;
+package br.com.iteam.core.domain.entity;
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -10,8 +10,8 @@ public class Product {
     private BigDecimal price;
     private Category category;
     private Integer stock;
-    private OffsetDateTime createdAt;
-    private OffsetDateTime updatedAt;
+    final OffsetDateTime createdAt;
+    final OffsetDateTime updatedAt;
 
     public Product(String name, String description, BigDecimal price, Category category, Integer stock) {
         this.name = name;
@@ -19,6 +19,8 @@ public class Product {
         this.price = price;
         this.category = category;
         this.stock = stock;
+        this.createdAt = OffsetDateTime.now();
+        this.updatedAt = OffsetDateTime.now();
     }
 
     public String getName() {

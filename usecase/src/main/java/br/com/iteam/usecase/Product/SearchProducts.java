@@ -1,6 +1,6 @@
 package br.com.iteam.usecase.Product;
 
-import br.com.iteam.core.domain.Product;
+import br.com.iteam.core.domain.entity.Product;
 
 import java.math.BigDecimal;
 import java.util.List;

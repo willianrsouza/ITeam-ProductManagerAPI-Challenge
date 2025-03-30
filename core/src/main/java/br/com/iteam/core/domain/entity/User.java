@@ -1,4 +1,4 @@
-package br.com.iteam.core.domain;
+package br.com.iteam.core.domain.entity;
 
 import java.time.OffsetDateTime;
 import java.util.UUID;

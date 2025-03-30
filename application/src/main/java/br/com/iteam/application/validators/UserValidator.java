@@ -1,9 +1,9 @@
-package br.com.iteam.core.validators;
+package br.com.iteam.application.validators;
 
 import br.com.fluentvalidator.AbstractValidator;
-import br.com.iteam.core.domain.User;
+import br.com.iteam.core.domain.entity.User;
 
-public class ValidatorUser extends AbstractValidator<User> {
+public class UserValidator extends AbstractValidator<User> {
     @Override
     public void rules() {
         setPropertyOnContext("user");
