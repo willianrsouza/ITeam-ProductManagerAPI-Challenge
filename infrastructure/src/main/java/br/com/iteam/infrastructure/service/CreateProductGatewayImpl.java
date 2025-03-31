@@ -1,5 +1,6 @@
 package br.com.iteam.infrastructure.service;
 
+import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 import br.com.fluentvalidator.context.ValidationResult;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.application.gateway.CreateProductGateway;
@@ -14,7 +15,7 @@ import br.com.iteam.infrastructure.validators.ProductValidator;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.Optional;
-import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
+
 
 @Service
 @Transactional

@@ -1,8 +1,11 @@
 package br.com.iteam.infrastructure.config;
 
 import br.com.iteam.application.gateway.CreateProductGateway;
+import br.com.iteam.application.gateway.FindProductByIdGateway;
 import br.com.iteam.application.usecase.Product.CreateProductImpl;
+import br.com.iteam.application.usecase.Product.FindProductByIdImpl;
 import br.com.iteam.usecase.Product.CreateProduct;
+import br.com.iteam.usecase.Product.FindProductById;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -21,5 +24,10 @@ public class ProductConfig {
     @Bean
     public CreateProduct createProductUseCase(CreateProductGateway createProductGateway) {
         return new CreateProductImpl(createProductGateway);
+    }
+
+    @Bean
+    public FindProductById findProductUseCase(FindProductByIdGateway findProductByIdGateway) {
+        return new FindProductByIdImpl(findProductByIdGateway);
     }
 }
