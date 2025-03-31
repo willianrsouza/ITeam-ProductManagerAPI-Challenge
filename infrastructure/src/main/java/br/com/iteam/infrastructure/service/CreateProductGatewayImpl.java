@@ -6,6 +6,7 @@ import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.application.gateway.CreateProductGateway;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.entity.ProductEntity;
+import br.com.iteam.infrastructure.exception.NotFoundException;
 import br.com.iteam.infrastructure.exception.ValidationException;
 import br.com.iteam.infrastructure.mapper.CategoryMapper;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
@@ -43,7 +44,7 @@ public class CreateProductGatewayImpl implements CreateProductGateway {
                 .map(categoryMapper::toCategory);
 
         if (categoryOpt.isEmpty()) {
-            throw new ValidationException("Category not found.");
+            throw new NotFoundException("Category not found.");
         }
 
         product.setCategory(categoryOpt.get());

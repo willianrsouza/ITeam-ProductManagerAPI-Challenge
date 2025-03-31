@@ -25,7 +25,7 @@ public class GlobalExceptionHandler {
                 .collect(Collectors.toList());
 
         ErrorResponse errorResponse = ErrorResponse.of(
-                "Validation Failures",
+                "Validation Failures.",
                 HttpStatus.BAD_REQUEST.value(),
                 "One or more fields are invalid",
                 errors
@@ -38,7 +38,7 @@ public class GlobalExceptionHandler {
         List<ErrorDetail> errors = List.of(new ErrorDetail("generic", ex.getMessage()));
 
         ErrorResponse errorResponse = ErrorResponse.of(
-                "Internal Server Error",
+                "Internal Server Error.",
                 HttpStatus.INTERNAL_SERVER_ERROR.value(),
                 "An unexpected error occurred",
                 errors
@@ -50,11 +50,25 @@ public class GlobalExceptionHandler {
     @ExceptionHandler({InvalidFormatException.class, HttpMessageNotReadableException.class})
     public ResponseEntity<ErrorResponse> handleJsonParseException(Exception ex) {
         ErrorResponse errorResponse = ErrorResponse.of(
-                "Invalid UUID",
+                "Invalid UUID.",
                 HttpStatus.BAD_REQUEST.value(),
                 "The provided ID is not a valid UUID format.",
                 null
         );
         return ResponseEntity.badRequest().body(errorResponse);
+    }
+
+    @ExceptionHandler(NotFoundException.class)
+    public ResponseEntity<ErrorResponse> handleNotFoundException(
+            NotFoundException ex) {
+
+        ErrorResponse errorResponse = ErrorResponse.of(
+                "Resource Not Found.",
+                HttpStatus.NOT_FOUND.value(),
+                ex.getMessage(),
+                null
+        );
+
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(errorResponse);
     }
 }

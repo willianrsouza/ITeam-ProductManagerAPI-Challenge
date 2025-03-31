@@ -3,7 +3,7 @@ package br.com.iteam.infrastructure.service;
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 import br.com.iteam.application.gateway.FindProductByIdGateway;
 import br.com.iteam.core.domain.entity.Product;
-import br.com.iteam.infrastructure.exception.ValidationException;
+import br.com.iteam.infrastructure.exception.NotFoundException;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
 import br.com.iteam.infrastructure.repository.ProductRepository;
 import org.springframework.stereotype.Service;
@@ -31,7 +31,7 @@ public class FindProductByIdGatewayImpl implements FindProductByIdGateway {
                 .map(productMapper::toProduct);
 
         if (product.isEmpty()) {
-            throw new ValidationException("Product not found.");
+            throw new NotFoundException("Product not found.");
         }
 
         serviceLog.info("Product found successfully::FindProductByIdGatewayImpl");
