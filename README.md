@@ -33,7 +33,7 @@ O tema central da Clean Architecture é dividir sistemas em camadas para torná-
 
 Dependências: Pode depender de casos de uso e entidades, mas não deve depender de detalhes técnicos específicos, como frameworks.
 
-#### 4. Framework ()
+#### 4. Framework (Infrastructure)
 
 - Propósito: Esta camada contém detalhes técnicos e implementações concretas de frameoworks, bibliotecas e componentes externos. Ela se comunica com o sistema operacional, banco de dados, serviços web, etc. 
 
