@@ -11,7 +11,7 @@ Uma boa arquitetura adia decisões, evitando escolhas prematuras e facilitando m
 
 O tema central da Clean Architecture é dividir sistemas em camadas para torná-los mais flexíveis, manuteníveis e testáveis.
 
-IMAGEM
+![Clean Architecture](https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/clean-architecture-cone.jfif)
 
 #### 1. Entidade (Core)
 
