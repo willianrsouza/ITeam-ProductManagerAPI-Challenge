@@ -11,6 +11,7 @@ public class CategoryMapper {
 
     public CategoryEntity toCategoryEntity(Category category) {
         return new CategoryEntity(
+                category.getId(),
                 category.getName().name(),
                 category.getCreatedAt(),
                 category.getUpdatedAt()

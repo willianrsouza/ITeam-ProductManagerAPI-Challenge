@@ -5,4 +5,5 @@ import org.slf4j.LoggerFactory;
 
 public class Utilities {
     public static Logger serviceLog = LoggerFactory.getLogger("Service");
+    public static Logger controllerLog = LoggerFactory.getLogger("Controller");
 }

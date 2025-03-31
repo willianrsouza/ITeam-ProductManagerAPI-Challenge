@@ -2,7 +2,6 @@ package br.com.iteam.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.math.BigDecimal;
 import java.time.OffsetDateTime;
 import java.util.UUID;
@@ -18,24 +17,24 @@ public class ProductEntity {
     private UUID id;
 
     @ManyToOne
-    @JoinColumn(name = "category_id", nullable = false)
+    @JoinColumn(name = "CATEGORYID", referencedColumnName = "Id", nullable = false)  // A chave estrangeira vai referenciar o UUID
     private CategoryEntity categoryEntity;
 
-    @Column(name = "name", nullable = false)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "description", nullable = false)
+    @Column(name = "DESCRIPTION", nullable = false)
     private String description;
 
-    @Column(name = "price", nullable = false)
+    @Column(name = "PRICE", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "stock", nullable = false)
+    @Column(name = "STOCK", nullable = false)
     private Integer stock;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "CREATEDAT", nullable = false)
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "UPDATEDAT", nullable = false)
     private OffsetDateTime updatedAt = OffsetDateTime.now();
 }

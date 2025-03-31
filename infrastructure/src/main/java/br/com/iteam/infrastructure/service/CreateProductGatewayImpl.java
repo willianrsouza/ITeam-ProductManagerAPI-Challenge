@@ -10,10 +10,12 @@ import br.com.iteam.infrastructure.repository.ProductRepository;
 import br.com.iteam.infrastructure.validators.CategoryValidator;
 import br.com.iteam.infrastructure.validators.ProductValidator;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 
 @Service
+@Transactional
 public class CreateProductGatewayImpl implements CreateProductGateway {
 
     private final ProductValidator productValidator;
@@ -45,10 +47,11 @@ public class CreateProductGatewayImpl implements CreateProductGateway {
         }
 
         ProductEntity productToEntityMapped = productMapper.toProductEntity(product);
+
+        serviceLog.info("productToEntityMapped ====== " + productToEntityMapped);
         ProductEntity productSaved = productRepository.save(productToEntityMapped);
 
         serviceLog.info("Product created successfully::CreateProductGatewayImpl");
-
         return productMapper.toProduct(productSaved);
     }
 }

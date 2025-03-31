@@ -2,9 +2,7 @@ package br.com.iteam.infrastructure.entity;
 
 import jakarta.persistence.*;
 import lombok.*;
-
 import java.time.OffsetDateTime;
-import java.util.List;
 import java.util.UUID;
 
 @Data
@@ -15,24 +13,15 @@ import java.util.UUID;
 public class CategoryEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(name = "name", nullable = false, unique = true)
+    @Column(name = "NAME", nullable = false)
     private String name;
 
-    @Column(name = "created_at", nullable = false)
+    @Column(name = "CREATEDAT", nullable = false)
     private OffsetDateTime createdAt = OffsetDateTime.now();
 
-    @Column(name = "updated_at", nullable = false)
+    @Column(name = "UPDATEDAT", nullable = false)
     private OffsetDateTime updatedAt = OffsetDateTime.now();
-
-    @OneToMany(mappedBy = "categoryEntity")
-    private List<ProductEntity> productEntities;
-
-    public CategoryEntity(String name, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
-        this.name = name;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 }
