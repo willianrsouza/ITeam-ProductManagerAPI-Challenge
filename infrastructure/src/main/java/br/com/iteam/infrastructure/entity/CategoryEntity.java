@@ -11,17 +11,16 @@ import java.util.UUID;
 @Entity
 @Table(name = "categories")
 public class CategoryEntity {
-
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID id = UUID.randomUUID();
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "Name", nullable = false)
     private String name;
 
-    @Column(name = "CREATEDAT", nullable = false)
-    private OffsetDateTime createdAt = OffsetDateTime.now();
+    @Column(name = "CreatedAt", nullable = false, updatable = false, insertable = false)
+    private OffsetDateTime createdAt;
 
-    @Column(name = "UPDATEDAT", nullable = false)
-    private OffsetDateTime updatedAt = OffsetDateTime.now();
+    @Column(name = "UpdatedAt", nullable = false, insertable = false)
+    private OffsetDateTime updatedAt;
 }
+

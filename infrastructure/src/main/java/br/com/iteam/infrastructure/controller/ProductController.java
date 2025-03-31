@@ -1,5 +1,6 @@
 package br.com.iteam.infrastructure.controller;
 
+import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.dto.request.CreateProductRequest;
 import br.com.iteam.infrastructure.dto.response.BaseResponse;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
@@ -35,11 +36,13 @@ public class ProductController {
                     content = @Content(schema = @Schema(implementation = BaseResponse.class))),
             @ApiResponse(responseCode = "500", description = "Erro interno do servidor")
     })
-    public BaseResponse<String> createProduct(@RequestBody CreateProductRequest request){
+    public BaseResponse<Product> createProduct(@RequestBody CreateProductRequest request){
         controllerLog.info("Start createProductUseCase::ProductController");
-        createProductUseCase.create(productMapper.toProduct(request));
-        controllerLog.info("Done createProductUseCase::ProductController");
 
-        return BaseResponse.<String>builder().success(true).message("Success").build();
+        Product productMapped = productMapper.toProduct(request);
+        Product response = createProductUseCase.create(productMapped);
+
+        controllerLog.info("Done createProductUseCase::ProductController");
+        return BaseResponse.<Product>builder().status(200).success(true).result(response).build();
     }
 }

@@ -1,6 +1,6 @@
 CREATE TABLE Products (
       Id UUID DEFAULT UUID() PRIMARY KEY,
-      CategoryId UUID NOT NULL,
+      CategoryId UUID,
       Name VARCHAR(100) NOT NULL,
       Description TEXT NOT NULL,
       Price DECIMAL(10, 2) NOT NULL,

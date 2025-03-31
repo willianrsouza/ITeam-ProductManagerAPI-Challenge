@@ -10,6 +10,10 @@ public class Category {
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 
+    public Category(UUID id) {
+        this.id = id;
+    }
+
     public Category(UUID id, CategoryName name, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
         this.id = id;
         this.name = name;

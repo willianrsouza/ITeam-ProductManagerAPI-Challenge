@@ -12,29 +12,29 @@ import java.util.UUID;
 @Entity
 @Table(name = "products")
 public class ProductEntity {
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private UUID id = UUID.randomUUID();
 
     @ManyToOne
-    @JoinColumn(name = "CATEGORYID", referencedColumnName = "Id", nullable = false)  // A chave estrangeira vai referenciar o UUID
-    private CategoryEntity categoryEntity;
+    @JoinColumn(name = "CategoryId", referencedColumnName = "Id")
+    private CategoryEntity category;
 
-    @Column(name = "NAME", nullable = false)
+    @Column(name = "Name", nullable = false)
     private String name;
 
-    @Column(name = "DESCRIPTION", nullable = false)
+    @Column(name = "Description", nullable = false)
     private String description;
 
-    @Column(name = "PRICE", nullable = false)
+    @Column(name = "Price", nullable = false)
     private BigDecimal price;
 
-    @Column(name = "STOCK", nullable = false)
+    @Column(name = "Stock", nullable = false)
     private Integer stock;
 
-    @Column(name = "CREATEDAT", nullable = false)
-    private OffsetDateTime createdAt = OffsetDateTime.now();
+    @Column(name = "CreatedAt", nullable = false, updatable = false, insertable = false)
+    private OffsetDateTime createdAt;
 
-    @Column(name = "UPDATEDAT", nullable = false)
-    private OffsetDateTime updatedAt = OffsetDateTime.now();
+    @Column(name = "UpdatedAt", nullable = false, insertable = false)
+    private OffsetDateTime updatedAt;
 }

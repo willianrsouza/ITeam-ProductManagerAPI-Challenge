@@ -1,0 +1,22 @@
+2025-03-31 11:09:16.497110-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PRODUCTS \000d\000a\000d\000a[*]SELECT * FROM CATEGORIES \000d\000aWHERE id = 3f5f5e22-7b44-44a0-b062-1f61e2c58f2f"; SQL statement:
+SELECT * FROM PRODUCTS 
+
+SELECT * FROM CATEGORIES 
+WHERE id = 3f5f5e22-7b44-44a0-b062-1f61e2c58f2f [42000-232]
+2025-03-31 11:09:18.076023-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * FROM PRODUCTS \000d\000a\000d\000a[*]SELECT * FROM CATEGORIES \000d\000aWHERE id = 3f5f5e22-7b44-44a0-b062-1f61e2c58f2f"; SQL statement:
+SELECT * FROM PRODUCTS 
+
+SELECT * FROM CATEGORIES 
+WHERE id = 3f5f5e22-7b44-44a0-b062-1f61e2c58f2f [42000-232]
+2025-03-31 11:09:30.251472-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * \000d\000aFROM CATEGORIES \000d\000aWHERE id = 3[*]f5f5e22-7b44-44a0-b062-1f61e2c58f2f"; SQL statement:
+SELECT * 
+FROM CATEGORIES 
+WHERE id = 3f5f5e22-7b44-44a0-b062-1f61e2c58f2f [42000-232]
+2025-03-31 11:09:35.072195-03:00 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLSyntaxErrorException: Syntax error in SQL statement "SELECT * \000d\000aFROM CATEGORIES \000d\000aWHERE ID = 3[*]f5f5e22-7b44-44a0-b062-1f61e2c58f2f"; SQL statement:
+SELECT * 
+FROM CATEGORIES 
+WHERE ID = 3f5f5e22-7b44-44a0-b062-1f61e2c58f2f [42000-232]

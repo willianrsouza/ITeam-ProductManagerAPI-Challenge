@@ -31,7 +31,7 @@ public class ProductMapper {
     }
 
     public Product toProduct(ProductEntity productEntity) {
-        Category category = categoryMapper.toCategory(productEntity.getCategoryEntity());
+        Category category = categoryMapper.toCategory(productEntity.getCategory());
 
         return new Product(
                 productEntity.getId(),
@@ -46,13 +46,11 @@ public class ProductMapper {
     }
 
     public Product toProduct(CreateProductRequest productRequest) {
-        Category category = categoryMapper.toCategory(productRequest.category());
-
         return new Product(
                 productRequest.name(),
                 productRequest.description(),
                 productRequest.price(),
-                category,
+                new Category(productRequest.categoryId()),
                 productRequest.stock()
         );
     }
