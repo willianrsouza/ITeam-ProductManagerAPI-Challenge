@@ -3,11 +3,6 @@
 
 Este projeto foi desenvolvido para atender aos requisitos do teste da IT-EAM (www.it-eam.com). O objetivo é criar uma API RESTful para o gerenciamento de produtos, permitindo que usuários autenticados realizem operações de CRUD (Criar, Ler, Atualizar e Excluir). A API conta com validações robustas e controle de acesso baseado em funções.
 
-
-
-
-
-
 ## Conceitos Aplicados
 
 #### "O trabalho de uma boa arquitetura de software é adiar decisões, não tomá-las."
@@ -44,7 +39,9 @@ Dependências: Pode depender de casos de uso e entidades, mas não deve depender
 
 - Dependências: Pode depender das outras camadas da aplicação para fornecer funcionalidade específica, mas as camadas internas não devem depender diretamente dela.
 
-A Clean Architecture enfatiza a sepração de responsabilidades entre essas camdas, isolando o coração do software, e se preocupando a longo prazo com a manutenabilidade e escalonamento de tecnologias. ## Técnicas 
+A Clean Architecture enfatiza a sepração de responsabilidades entre essas camdas, isolando o coração do software, e se preocupando a longo prazo com a manutenabilidade e escalonamento de tecnologias. 
+
+## Técnicas 
 
 - Spring Boot:: 3.4.4
 - Java:: 17
