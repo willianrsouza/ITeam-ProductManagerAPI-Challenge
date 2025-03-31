@@ -43,4 +43,22 @@ public class Category {
     public OffsetDateTime getUpdatedAt() {
         return updatedAt;
     }
+
+    public boolean isValidUUID() {
+        if (this.id == null) {
+            return false;
+        }
+
+        if (this.id.equals(new UUID(0, 0))) {
+            return false;
+        }
+
+        try {
+            UUID.fromString(this.id.toString());
+        } catch (IllegalArgumentException e) {
+            return false;
+        }
+
+        return true;
+    }
 }
