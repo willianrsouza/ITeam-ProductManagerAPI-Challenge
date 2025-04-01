@@ -6,54 +6,41 @@ import br.com.iteam.application.gateway.Product.UpdateProductByIdGateway;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.entity.ProductEntity;
-import br.com.iteam.infrastructure.exception.NotFoundException;
 import br.com.iteam.infrastructure.exception.ValidationException;
-import br.com.iteam.infrastructure.mapper.CategoryMapper;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
-import br.com.iteam.infrastructure.repository.CategoryRepository;
 import br.com.iteam.infrastructure.repository.ProductRepository;
 import br.com.iteam.infrastructure.validators.PartialProductValidator;
+import br.com.iteam.usecase.Category.FindCategoryById;
+import br.com.iteam.usecase.Product.FindProductById;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Optional;
 import java.util.UUID;
 
 @Service
 @Transactional
 public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
     private final ProductRepository productRepository;
-    private final CategoryRepository categoryRepository;
+    private final FindProductById findProductById;
+    private final FindCategoryById findCategoryById;
     private final ProductMapper productMapper;
-    private final CategoryMapper categoryMapper;
     private final PartialProductValidator partialProductValidator;
 
-    public UpdateProductByIdGatewayImpl(ProductRepository productRepository, CategoryRepository categoryRepository, ProductMapper productMapper, CategoryMapper categoryMapper, PartialProductValidator partialProductValidator) {
+    public UpdateProductByIdGatewayImpl(ProductRepository productRepository, FindProductById findProductById, FindCategoryById findCategoryById, ProductMapper productMapper, PartialProductValidator partialProductValidator) {
         this.productRepository = productRepository;
-        this.categoryRepository = categoryRepository;
+        this.findProductById = findProductById;
+        this.findCategoryById = findCategoryById;
         this.productMapper = productMapper;
-        this.categoryMapper = categoryMapper;
         this.partialProductValidator = partialProductValidator;
     }
 
     @Override
     public Product updateById(UUID id, Product productUpdateData) {
         serviceLog.info("Starting updateById for Product ID: {}", id);
-
-        Optional<ProductEntity> existingProduct = productRepository.findById(id);
-
-        if (existingProduct.isEmpty()) {
-            throw new NotFoundException("Product with ID: " + id + " not found.");
-        }
+        ProductEntity existingProductEntity = productMapper.toProductEntity(findProductById.findById(id));
 
         if(productUpdateData.getCategory().getId() != null){
-            Optional<Category> category = categoryRepository.findById(productUpdateData.getCategory().getId())
-                    .map(categoryMapper::toCategory);
-
-            if (category.isEmpty()) {
-                throw new NotFoundException("Category not found.");
-            }
-
-            productUpdateData.setCategory(category.get());
+            Category category = findCategoryById.findById(productUpdateData.getCategory().getId());
+            productUpdateData.setCategory(category);
         }
 
         ValidationResult validationResult = partialProductValidator.validate(productUpdateData);
@@ -63,7 +50,7 @@ public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
         }
 
         ProductEntity updatedProductDataMapped = productMapper.toProductEntityPartial(productUpdateData);
-        ProductEntity mergedProduct = productMapper.merge(existingProduct.get(), updatedProductDataMapped);
+        ProductEntity mergedProduct = productMapper.merge(existingProductEntity, updatedProductDataMapped);
 
         productRepository.save(mergedProduct);
 

@@ -30,11 +30,10 @@ public class FindProductByIdGatewayImpl implements FindProductByIdGateway {
                 .map(productMapper::toProduct);
 
         if (product.isEmpty()) {
-            throw new NotFoundException("Product not found.");
+            throw new NotFoundException("Product with ID: " + id + " not found.");
         }
 
         serviceLog.info("Product found successfully::FindProductByIdGatewayImpl");
-
         return product.get();
     }
 }

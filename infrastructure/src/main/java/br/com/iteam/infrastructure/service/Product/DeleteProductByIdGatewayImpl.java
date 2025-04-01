@@ -2,12 +2,10 @@ package br.com.iteam.infrastructure.service.Product;
 
 import br.com.iteam.application.gateway.Product.DeleteProductByIdGateway;
 import br.com.iteam.core.domain.entity.Product;
-import br.com.iteam.infrastructure.exception.NotFoundException;
-import br.com.iteam.infrastructure.mapper.ProductMapper;
 import br.com.iteam.infrastructure.repository.ProductRepository;
+import br.com.iteam.usecase.Product.FindProductById;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import java.util.Optional;
 import java.util.UUID;
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 
@@ -15,28 +13,22 @@ import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 @Transactional
 public class DeleteProductByIdGatewayImpl implements DeleteProductByIdGateway {
 
-    private ProductRepository productRepository;
-    private ProductMapper productMapper;
+    private final FindProductById findProductById;
+    private final ProductRepository productRepository;
 
-    public DeleteProductByIdGatewayImpl(ProductRepository productRepository, ProductMapper productMapper) {
+    public DeleteProductByIdGatewayImpl(FindProductById findProductById, ProductRepository productRepository) {
+        this.findProductById = findProductById;
         this.productRepository = productRepository;
-        this.productMapper = productMapper;
     }
 
     @Override
     public boolean deleteById(UUID id) {
         serviceLog.info("Starting deleteProductById::deleteProductByIdGatewayImpl");
 
-        Optional<Product> product = productRepository.findById(id)
-                .map(productMapper::toProduct);
+        Product product = findProductById.findById(id);
+        productRepository.deleteById(product.getId());
 
-        if (product.isEmpty()) {
-            throw new NotFoundException("Product with ID: " + id + " not found.");
-        }
-
-        productRepository.deleteById(id);
         serviceLog.info("Product delete successfully::deleteProductByIdGatewayImpl");
-
         return true;
     }
 }

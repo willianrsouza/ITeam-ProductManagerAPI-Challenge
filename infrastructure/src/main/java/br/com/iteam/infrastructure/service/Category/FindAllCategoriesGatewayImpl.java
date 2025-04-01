@@ -34,8 +34,7 @@ public class FindAllCategoriesGatewayImpl implements FindAllCategoriesGateway {
             throw new NotFoundException("Not found categories.");
         }
 
-        serviceLog.info("Starting findAll::FindAllCategoriesGatewayImpl");
-
+        serviceLog.info("Categories found successfully::FindAllCategoriesGatewayImpl");
         return results;
     }
 }
