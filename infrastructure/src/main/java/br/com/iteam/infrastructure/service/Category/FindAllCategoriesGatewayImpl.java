@@ -3,6 +3,7 @@ package br.com.iteam.infrastructure.service.Category;
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 import br.com.iteam.application.gateway.Category.FindAllCategoriesGateway;
 import br.com.iteam.core.domain.entity.Category;
+import br.com.iteam.infrastructure.exception.NotFoundException;
 import br.com.iteam.infrastructure.mapper.CategoryMapper;
 import br.com.iteam.infrastructure.repository.CategoryRepository;
 import org.springframework.stereotype.Service;
@@ -28,6 +29,10 @@ public class FindAllCategoriesGatewayImpl implements FindAllCategoriesGateway {
         List<Category> results = categoryRepository.findAll().stream()
                 .map(categoryMapper::toCategory)
                 .toList();
+
+        if(results.isEmpty()) {
+            throw new NotFoundException("Not found categories.");
+        }
 
         serviceLog.info("Starting findAll::FindAllCategoriesGatewayImpl");
 
