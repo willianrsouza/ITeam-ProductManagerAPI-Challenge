@@ -11,7 +11,7 @@ Uma boa arquitetura adia decisões, evitando escolhas prematuras e facilitando m
 
 O tema central da Clean Architecture é dividir sistemas em camadas para torná-los mais flexíveis, manuteníveis e testáveis.
 
-IMAGEM
+![Clean Architecture](https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/clean-architecture-cone.jfif)
 
 #### 1. Entidade (Core)
 
@@ -33,7 +33,7 @@ IMAGEM
 
 Dependências: Pode depender de casos de uso e entidades, mas não deve depender de detalhes técnicos específicos, como frameworks.
 
-#### 4. Framework ()
+#### 4. Framework (Infrastructure)
 
 - Propósito: Esta camada contém detalhes técnicos e implementações concretas de frameoworks, bibliotecas e componentes externos. Ela se comunica com o sistema operacional, banco de dados, serviços web, etc. 
 
