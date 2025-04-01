@@ -3,7 +3,7 @@ package br.com.iteam.infrastructure.service;
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 import br.com.fluentvalidator.context.ValidationResult;
 import br.com.iteam.core.domain.entity.Category;
-import br.com.iteam.application.gateway.CreateProductGateway;
+import br.com.iteam.application.gateway.Product.CreateProductGateway;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.entity.ProductEntity;
 import br.com.iteam.infrastructure.exception.NotFoundException;

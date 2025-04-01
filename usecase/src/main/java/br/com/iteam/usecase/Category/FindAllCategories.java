@@ -4,5 +4,5 @@ import br.com.iteam.core.domain.entity.Category;
 import java.util.List;
 
 public interface ListCategories {
-    List<Category> search();
+    List<Category> findAll();
 }
