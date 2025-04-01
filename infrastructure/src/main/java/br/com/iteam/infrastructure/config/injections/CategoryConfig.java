@@ -1,20 +1,11 @@
-package br.com.iteam.infrastructure.config;
+package br.com.iteam.infrastructure.config.injections;
 
 import br.com.iteam.application.gateway.Category.FindAllCategoriesGateway;
 import br.com.iteam.application.gateway.Category.FindCategoryByIdGateway;
-import br.com.iteam.application.gateway.Product.CreateProductGateway;
-import br.com.iteam.application.gateway.Product.DeleteProductByIdGateway;
-import br.com.iteam.application.gateway.Product.FindProductByIdGateway;
 import br.com.iteam.application.usecase.Category.FindAllCategoriesImpl;
 import br.com.iteam.application.usecase.Category.FindCategoryByIdImpl;
-import br.com.iteam.application.usecase.Product.CreateProductImpl;
-import br.com.iteam.application.usecase.Product.DeleteProductByIdImpl;
-import br.com.iteam.application.usecase.Product.FindProductByIdImpl;
 import br.com.iteam.usecase.Category.FindAllCategories;
 import br.com.iteam.usecase.Category.FindCategoryById;
-import br.com.iteam.usecase.Product.CreateProduct;
-import br.com.iteam.usecase.Product.DeleteProductById;
-import br.com.iteam.usecase.Product.FindProductById;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
