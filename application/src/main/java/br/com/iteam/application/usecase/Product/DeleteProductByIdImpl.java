@@ -1,6 +1,6 @@
 package br.com.iteam.application.usecase.Product;
 
-import br.com.iteam.application.gateway.DeleteProductByIdGateway;
+import br.com.iteam.application.gateway.Product.DeleteProductByIdGateway;
 import br.com.iteam.usecase.Product.DeleteProductById;
 import java.util.UUID;
 

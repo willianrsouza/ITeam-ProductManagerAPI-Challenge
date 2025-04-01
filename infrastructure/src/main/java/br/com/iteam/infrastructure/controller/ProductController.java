@@ -1,5 +1,6 @@
 package br.com.iteam.infrastructure.controller;
 
+import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.dto.request.CreateProductRequest;
 import br.com.iteam.infrastructure.dto.response.BaseResponse;
@@ -18,6 +19,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 import java.util.UUID;
 
 import static br.com.iteam.infrastructure.utils.Utilities.controllerLog;

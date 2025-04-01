@@ -1,4 +1,4 @@
-package br.com.iteam.infrastructure.service;
+package br.com.iteam.infrastructure.service.Product;
 
 import br.com.iteam.application.gateway.Product.DeleteProductByIdGateway;
 import br.com.iteam.core.domain.entity.Product;

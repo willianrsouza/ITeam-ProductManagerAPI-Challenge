@@ -1,6 +1,6 @@
 package br.com.iteam.application.usecase.Product;
 
-import br.com.iteam.application.gateway.FindProductByIdGateway;
+import br.com.iteam.application.gateway.Product.FindProductByIdGateway;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.usecase.Product.FindProductById;
 import java.util.UUID;

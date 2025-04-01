@@ -1,4 +1,4 @@
-package br.com.iteam.application.gateway;
+package br.com.iteam.application.gateway.Product;
 
 import java.util.UUID;
 

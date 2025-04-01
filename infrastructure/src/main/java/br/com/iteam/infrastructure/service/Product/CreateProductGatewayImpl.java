@@ -1,4 +1,4 @@
-package br.com.iteam.infrastructure.service;
+package br.com.iteam.infrastructure.service.Product;
 
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 import br.com.fluentvalidator.context.ValidationResult;
