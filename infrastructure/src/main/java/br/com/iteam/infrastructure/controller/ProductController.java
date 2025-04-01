@@ -1,14 +1,15 @@
 package br.com.iteam.infrastructure.controller;
 
-import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.dto.request.CreateProductRequest;
+import br.com.iteam.infrastructure.dto.request.UpdateProductRequest;
 import br.com.iteam.infrastructure.dto.response.BaseResponse;
 import br.com.iteam.infrastructure.dto.response.SuccessResponse;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
 import br.com.iteam.usecase.Product.CreateProduct;
 import br.com.iteam.usecase.Product.DeleteProductById;
 import br.com.iteam.usecase.Product.FindProductById;
+import br.com.iteam.usecase.Product.UpdateProductById;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -18,8 +19,6 @@ import io.swagger.v3.oas.annotations.responses.ApiResponses;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 import java.util.UUID;
 
 import static br.com.iteam.infrastructure.utils.Utilities.controllerLog;
@@ -31,12 +30,14 @@ public class ProductController {
     private final CreateProduct createProductUseCase;
     private final FindProductById findProductByIdUseCase;
     private final DeleteProductById deleteProductByIdUseCase;
+    private final UpdateProductById updateProductByIdUseCase;
     private final ProductMapper productMapper;
 
-    public ProductController(CreateProduct createProductUseCase, FindProductById findProductByIdUseCase, DeleteProductById deleteProductByIdUseCase, ProductMapper productMapper) {
+    public ProductController(CreateProduct createProductUseCase, FindProductById findProductByIdUseCase, DeleteProductById deleteProductByIdUseCase, UpdateProductById updateProductByIdUseCase, ProductMapper productMapper) {
         this.createProductUseCase = createProductUseCase;
         this.findProductByIdUseCase = findProductByIdUseCase;
         this.deleteProductByIdUseCase = deleteProductByIdUseCase;
+        this.updateProductByIdUseCase = updateProductByIdUseCase;
         this.productMapper = productMapper;
     }
 
@@ -90,5 +91,23 @@ public class ProductController {
 
         controllerLog.info("Done deleteProductByIdUseCase::ProductController");
         return result;
+    }
+
+    @PutMapping("/{id}")
+    @Operation(summary = "Update product by ID", description = "Updates an existing product based on the provided ID and request payload.")
+    @ApiResponses({
+            @ApiResponse(responseCode = "200", description = "Product successfully updated", content = @Content(schema = @Schema(implementation = SuccessResponse.class))),
+            @ApiResponse(responseCode = "400", description = "Invalid request", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error")
+    })
+    public SuccessResponse<Product> updateProductById(@PathVariable UUID id, @Valid @RequestBody UpdateProductRequest request) {
+        controllerLog.info("Start updateProductByIdUseCase::ProductController");
+
+        Product productToUpdate = productMapper.toProduct(request);
+        Product updatedProduct = updateProductByIdUseCase.updateById(id, productToUpdate);
+
+        controllerLog.info("Done updateProductByIdUseCase::ProductController");
+        return SuccessResponse.of(HttpStatus.OK.value(), updatedProduct);
     }
 }

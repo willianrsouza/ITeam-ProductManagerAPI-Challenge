@@ -14,17 +14,6 @@ public class Product {
     private OffsetDateTime createdAt;
     private OffsetDateTime updatedAt;
 
-    public Product(UUID id, String name, String description, BigDecimal price, Category category, Integer stock, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
-        this.id = id;
-        this.name = name;
-        this.description = description;
-        this.price = price;
-        this.category = category;
-        this.stock = stock;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
     public Product(String name, String description, BigDecimal price, Category category, Integer stock) {
         this.id = UUID.randomUUID();
         this.name = name;
@@ -34,6 +23,27 @@ public class Product {
         this.stock = stock;
         this.createdAt = OffsetDateTime.now();
         this.updatedAt = OffsetDateTime.now();
+    }
+
+    public Product(String name, String description, BigDecimal price, Category category, Integer stock, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.stock = stock;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
+    }
+
+    public Product(UUID id, String name, String description, BigDecimal price, Category category, Integer stock, OffsetDateTime createdAt, OffsetDateTime updatedAt) {
+        this.id = id;
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.category = category;
+        this.stock = stock;
+        this.createdAt = createdAt;
+        this.updatedAt = updatedAt;
     }
 
     public UUID getId() {

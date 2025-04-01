@@ -12,7 +12,6 @@ import java.util.UUID;
 @Entity
 @Table(name = "products")
 public class ProductEntity {
-
     @Id
     private UUID id = UUID.randomUUID();
 

@@ -11,6 +11,10 @@ import java.util.Optional;
 public class CategoryMapper {
 
     public CategoryEntity toCategoryEntity(Category category) {
+        if (category.getId() == null) {
+            return null;
+        }
+
         return new CategoryEntity(
                 category.getId(),
                 category.getName().name(),

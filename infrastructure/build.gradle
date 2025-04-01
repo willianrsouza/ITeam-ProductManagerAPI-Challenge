@@ -2,6 +2,7 @@ plugins {
     id 'java'
     id 'org.springframework.boot' version '3.4.4'
     id 'io.spring.dependency-management' version '1.1.3'
+    id 'org.jetbrains.kotlin.jvm'
 }
 
 group = 'br.com.iteam'
@@ -42,8 +43,12 @@ dependencies {
     implementation 'org.springdoc:springdoc-openapi-starter-webmvc-ui:2.7.0'
 
     implementation 'org.hibernate:hibernate-core:6.0.0.Final'
+    implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8"
 }
 
 test {
     useJUnitPlatform()
+}
+kotlin {
+    jvmToolchain(17)
 }
