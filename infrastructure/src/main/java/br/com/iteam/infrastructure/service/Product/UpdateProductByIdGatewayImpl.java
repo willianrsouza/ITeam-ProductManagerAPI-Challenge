@@ -3,7 +3,6 @@ package br.com.iteam.infrastructure.service.Product;
 import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 import br.com.fluentvalidator.context.ValidationResult;
 import br.com.iteam.application.gateway.Product.UpdateProductByIdGateway;
-import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.entity.ProductEntity;
 import br.com.iteam.infrastructure.exception.ValidationException;
@@ -20,29 +19,18 @@ import java.util.UUID;
 @Transactional
 public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
     private final ProductRepository productRepository;
-    private final FindProductById findProductById;
-    private final FindCategoryById findCategoryById;
     private final ProductMapper productMapper;
     private final PartialProductValidator partialProductValidator;
 
     public UpdateProductByIdGatewayImpl(ProductRepository productRepository, FindProductById findProductById, FindCategoryById findCategoryById, ProductMapper productMapper, PartialProductValidator partialProductValidator) {
         this.productRepository = productRepository;
-        this.findProductById = findProductById;
-        this.findCategoryById = findCategoryById;
         this.productMapper = productMapper;
         this.partialProductValidator = partialProductValidator;
     }
 
     @Override
-    public Product updateById(UUID id, Product productUpdateData) {
+    public Product updateById(UUID id, Product existingProduct, Product productUpdateData) {
         serviceLog.info("Starting updateById for Product ID: {}", id);
-        ProductEntity existingProductEntity = productMapper.toProductEntity(findProductById.findById(id));
-
-        if(productUpdateData.getCategory().getId() != null){
-            Category category = findCategoryById.findById(productUpdateData.getCategory().getId());
-            productUpdateData.setCategory(category);
-        }
-
         ValidationResult validationResult = partialProductValidator.validate(productUpdateData);
 
         if (!validationResult.isValid()) {
@@ -50,7 +38,9 @@ public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
         }
 
         ProductEntity updatedProductDataMapped = productMapper.toProductEntityPartial(productUpdateData);
-        ProductEntity mergedProduct = productMapper.merge(existingProductEntity, updatedProductDataMapped);
+        ProductEntity existingProductMapped = productMapper.toProductEntity(existingProduct);
+
+        ProductEntity mergedProduct = productMapper.merge(existingProductMapped, updatedProductDataMapped);
 
         productRepository.save(mergedProduct);
 

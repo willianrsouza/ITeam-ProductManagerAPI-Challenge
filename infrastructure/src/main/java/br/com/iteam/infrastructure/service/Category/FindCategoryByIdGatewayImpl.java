@@ -26,7 +26,6 @@ public class FindCategoryByIdGatewayImpl implements FindCategoryByIdGateway {
     @Override
     public Category findById(UUID id) {
         serviceLog.info("Starting findCategoryById::FindCategoryByIdGatewayImpl");
-
         Optional<CategoryEntity> result = categoryRepository.findById(id);
 
         if (result.isEmpty()) {

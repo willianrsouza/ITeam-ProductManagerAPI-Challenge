@@ -8,6 +8,7 @@ import br.com.iteam.application.usecase.Product.CreateProductImpl;
 import br.com.iteam.application.usecase.Product.DeleteProductByIdImpl;
 import br.com.iteam.application.usecase.Product.FindProductByIdImpl;
 import br.com.iteam.application.usecase.Product.UpdateProductByIdImpl;
+import br.com.iteam.usecase.Category.FindCategoryById;
 import br.com.iteam.usecase.Product.CreateProduct;
 import br.com.iteam.usecase.Product.DeleteProductById;
 import br.com.iteam.usecase.Product.FindProductById;
@@ -28,8 +29,8 @@ public class ProductConfig {
     Therefore, Spring is already aware of its existence.
     */
     @Bean
-    public CreateProduct createProductUseCase(CreateProductGateway createProductGateway) {
-        return new CreateProductImpl(createProductGateway);
+    public CreateProduct createProductUseCase(CreateProductGateway createProductGateway, FindCategoryById findCategoryById) {
+        return new CreateProductImpl(createProductGateway, findCategoryById);
     }
 
     @Bean
@@ -38,12 +39,12 @@ public class ProductConfig {
     }
 
     @Bean
-    public DeleteProductById deleteProductByIdUseCase(DeleteProductByIdGateway deleteProductByIdGateway) {
-        return new DeleteProductByIdImpl(deleteProductByIdGateway);
+    public DeleteProductById deleteProductByIdUseCase(DeleteProductByIdGateway deleteProductByIdGateway, FindProductById findProductById) {
+        return new DeleteProductByIdImpl(deleteProductByIdGateway, findProductById);
     }
 
     @Bean
-    public UpdateProductById updateProductByIdUseCase(UpdateProductByIdGateway updateProductByIdGateway) {
-        return new UpdateProductByIdImpl(updateProductByIdGateway);
+    public UpdateProductById updateProductByIdUseCase(UpdateProductByIdGateway updateProductByIdGateway, FindProductById findProductById, FindCategoryById findCategoryById) {
+        return new UpdateProductByIdImpl(updateProductByIdGateway, findProductById, findCategoryById);
     }
 }
