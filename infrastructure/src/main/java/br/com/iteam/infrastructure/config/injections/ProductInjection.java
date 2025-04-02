@@ -1,18 +1,9 @@
 package br.com.iteam.infrastructure.config.injections;
 
-import br.com.iteam.application.gateway.Product.CreateProductGateway;
-import br.com.iteam.application.gateway.Product.DeleteProductByIdGateway;
-import br.com.iteam.application.gateway.Product.FindProductByIdGateway;
-import br.com.iteam.application.gateway.Product.UpdateProductByIdGateway;
-import br.com.iteam.application.usecase.Product.CreateProductUseCaseImpl;
-import br.com.iteam.application.usecase.Product.DeleteProductByIdUseCaseImpl;
-import br.com.iteam.application.usecase.Product.FindProductByIdUseCaseImpl;
-import br.com.iteam.application.usecase.Product.UpdateProductByIdUseCaseImpl;
+import br.com.iteam.application.gateway.Product.*;
+import br.com.iteam.application.usecase.Product.*;
 import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
-import br.com.iteam.usecase.Product.CreateProductUseCase;
-import br.com.iteam.usecase.Product.DeleteProductByIdUseCase;
-import br.com.iteam.usecase.Product.FindProductByIdUseCase;
-import br.com.iteam.usecase.Product.UpdateProductByIdUseCase;
+import br.com.iteam.usecase.Product.*;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -46,5 +37,10 @@ public class ProductInjection {
     @Bean
     public UpdateProductByIdUseCase updateProductByIdUseCase(UpdateProductByIdGateway updateProductByIdGateway, FindProductByIdUseCase findProductByIdUseCase, FindCategoryByIdUseCase findCategoryByIdUseCase) {
         return new UpdateProductByIdUseCaseImpl(updateProductByIdGateway, findProductByIdUseCase, findCategoryByIdUseCase);
+    }
+
+    @Bean
+    public SearchProductsByFiltersUseCase searchProductsByFiltersUseCase(SearchProductsByFiltersGateway searchProductsByFiltersGateway, FindCategoryByIdUseCase findCategoryByIdUseCase) {
+        return new SearchProductsByFiltersUseCaseImpl(searchProductsByFiltersGateway, findCategoryByIdUseCase);
     }
 }

@@ -9,7 +9,9 @@ import br.com.iteam.infrastructure.entity.ProductEntity;
 import org.springframework.stereotype.Component;
 
 import java.time.OffsetDateTime;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Component
 public class ProductMapper {
@@ -99,5 +101,11 @@ public class ProductMapper {
                 null,
                 null
         );
+    }
+
+    public List<Product> toProductList(List<ProductEntity> productEntities) {
+        return productEntities.stream()
+                .map(this::toProduct)
+                .collect(Collectors.toList());
     }
 }
