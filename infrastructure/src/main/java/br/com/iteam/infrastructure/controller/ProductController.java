@@ -6,10 +6,10 @@ import br.com.iteam.infrastructure.dto.request.UpdateProductRequest;
 import br.com.iteam.infrastructure.dto.response.BaseResponse;
 import br.com.iteam.infrastructure.dto.response.SuccessResponse;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
-import br.com.iteam.usecase.Product.CreateProduct;
-import br.com.iteam.usecase.Product.DeleteProductById;
-import br.com.iteam.usecase.Product.FindProductById;
-import br.com.iteam.usecase.Product.UpdateProductById;
+import br.com.iteam.usecase.Product.CreateProductUseCase;
+import br.com.iteam.usecase.Product.DeleteProductByIdUseCase;
+import br.com.iteam.usecase.Product.FindProductByIdUseCase;
+import br.com.iteam.usecase.Product.UpdateProductByIdUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -27,13 +27,13 @@ import static br.com.iteam.infrastructure.utils.Utilities.controllerLog;
 @RequestMapping("api/products")
 @Tag(name = "Product", description = "Endpoints for product management")
 public class ProductController {
-    private final CreateProduct createProductUseCase;
-    private final FindProductById findProductByIdUseCase;
-    private final DeleteProductById deleteProductByIdUseCase;
-    private final UpdateProductById updateProductByIdUseCase;
+    private final CreateProductUseCase createProductUseCase;
+    private final FindProductByIdUseCase findProductByIdUseCase;
+    private final DeleteProductByIdUseCase deleteProductByIdUseCase;
+    private final UpdateProductByIdUseCase updateProductByIdUseCase;
     private final ProductMapper productMapper;
 
-    public ProductController(CreateProduct createProductUseCase, FindProductById findProductByIdUseCase, DeleteProductById deleteProductByIdUseCase, UpdateProductById updateProductByIdUseCase, ProductMapper productMapper) {
+    public ProductController(CreateProductUseCase createProductUseCase, FindProductByIdUseCase findProductByIdUseCase, DeleteProductByIdUseCase deleteProductByIdUseCase, UpdateProductByIdUseCase updateProductByIdUseCase, ProductMapper productMapper) {
         this.createProductUseCase = createProductUseCase;
         this.findProductByIdUseCase = findProductByIdUseCase;
         this.deleteProductByIdUseCase = deleteProductByIdUseCase;

@@ -3,18 +3,18 @@ package br.com.iteam.application.usecase.Product;
 import br.com.iteam.application.gateway.Product.UpdateProductByIdGateway;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
-import br.com.iteam.usecase.Category.FindCategoryById;
-import br.com.iteam.usecase.Product.FindProductById;
-import br.com.iteam.usecase.Product.UpdateProductById;
+import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
+import br.com.iteam.usecase.Product.FindProductByIdUseCase;
+import br.com.iteam.usecase.Product.UpdateProductByIdUseCase;
 import java.util.UUID;
 
-public class UpdateProductByIdImpl implements UpdateProductById {
+public class UpdateProductByIdUseCaseImpl implements UpdateProductByIdUseCase {
 
     private final UpdateProductByIdGateway updateProductByIdGateway;
-    private final FindProductById findProductByIdUseCase;
-    private final FindCategoryById findCategoryByIdUseCase;
+    private final FindProductByIdUseCase findProductByIdUseCase;
+    private final FindCategoryByIdUseCase findCategoryByIdUseCase;
 
-    public UpdateProductByIdImpl(UpdateProductByIdGateway updateProductByIdGateway, FindProductById findProductByIdUseCase, FindCategoryById findCategoryByIdUseCase) {
+    public UpdateProductByIdUseCaseImpl(UpdateProductByIdGateway updateProductByIdGateway, FindProductByIdUseCase findProductByIdUseCase, FindCategoryByIdUseCase findCategoryByIdUseCase) {
         this.updateProductByIdGateway = updateProductByIdGateway;
         this.findProductByIdUseCase = findProductByIdUseCase;
         this.findCategoryByIdUseCase = findCategoryByIdUseCase;

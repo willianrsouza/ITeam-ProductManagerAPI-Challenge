@@ -1,5 +1,5 @@
 package br.com.iteam.usecase.User;
 
-public interface UserAuthenticate {
+public interface UserAuthenticateUseCase {
     Boolean authenticate(String email, String password);
 }

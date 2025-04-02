@@ -3,8 +3,8 @@ package br.com.iteam.infrastructure.controller;
 import static br.com.iteam.infrastructure.utils.Utilities.controllerLog;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.infrastructure.dto.response.SuccessResponse;
-import br.com.iteam.usecase.Category.FindAllCategories;
-import br.com.iteam.usecase.Category.FindCategoryById;
+import br.com.iteam.usecase.Category.FindAllCategoriesUseCase;
+import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.responses.ApiResponses;
@@ -19,10 +19,10 @@ import java.util.UUID;
 @RequestMapping("api/categories")
 @Tag(name = "Category", description = "Endpoints for categories management")
 public class CategoryController {
-    private final FindAllCategories findAllCategoriesUseCase;
-    private final FindCategoryById findCategoryByIdUseCase;
+    private final FindAllCategoriesUseCase findAllCategoriesUseCase;
+    private final FindCategoryByIdUseCase findCategoryByIdUseCase;
 
-    public CategoryController(FindAllCategories findAllCategoriesUseCase, FindCategoryById findCategoryByIdUseCase) {
+    public CategoryController(FindAllCategoriesUseCase findAllCategoriesUseCase, FindCategoryByIdUseCase findCategoryByIdUseCase) {
         this.findAllCategoriesUseCase = findAllCategoriesUseCase;
         this.findCategoryByIdUseCase = findCategoryByIdUseCase;
     }

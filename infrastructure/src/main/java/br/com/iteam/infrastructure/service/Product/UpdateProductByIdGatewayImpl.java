@@ -9,8 +9,8 @@ import br.com.iteam.infrastructure.exception.ValidationException;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
 import br.com.iteam.infrastructure.repository.ProductRepository;
 import br.com.iteam.infrastructure.validators.PartialProductValidator;
-import br.com.iteam.usecase.Category.FindCategoryById;
-import br.com.iteam.usecase.Product.FindProductById;
+import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
+import br.com.iteam.usecase.Product.FindProductByIdUseCase;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import java.util.UUID;
@@ -22,7 +22,7 @@ public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
     private final ProductMapper productMapper;
     private final PartialProductValidator partialProductValidator;
 
-    public UpdateProductByIdGatewayImpl(ProductRepository productRepository, FindProductById findProductById, FindCategoryById findCategoryById, ProductMapper productMapper, PartialProductValidator partialProductValidator) {
+    public UpdateProductByIdGatewayImpl(ProductRepository productRepository, FindProductByIdUseCase findProductByIdUseCase, FindCategoryByIdUseCase findCategoryByIdUseCase, ProductMapper productMapper, PartialProductValidator partialProductValidator) {
         this.productRepository = productRepository;
         this.productMapper = productMapper;
         this.partialProductValidator = partialProductValidator;

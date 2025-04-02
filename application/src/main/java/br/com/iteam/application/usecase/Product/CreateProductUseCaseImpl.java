@@ -3,15 +3,15 @@ package br.com.iteam.application.usecase.Product;
 import br.com.iteam.application.gateway.Product.CreateProductGateway;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
-import br.com.iteam.usecase.Category.FindCategoryById;
-import br.com.iteam.usecase.Product.CreateProduct;
+import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
+import br.com.iteam.usecase.Product.CreateProductUseCase;
 
-public class CreateProductImpl implements CreateProduct {
+public class CreateProductUseCaseImpl implements CreateProductUseCase {
 
     private final CreateProductGateway createProductGateway;
-    private final FindCategoryById findCategoryByIdUseCase;
+    private final FindCategoryByIdUseCase findCategoryByIdUseCase;
 
-    public CreateProductImpl(CreateProductGateway createProductGateway, FindCategoryById findCategoryByIdUseCase) {
+    public CreateProductUseCaseImpl(CreateProductGateway createProductGateway, FindCategoryByIdUseCase findCategoryByIdUseCase) {
         this.createProductGateway = createProductGateway;
         this.findCategoryByIdUseCase = findCategoryByIdUseCase;
     }

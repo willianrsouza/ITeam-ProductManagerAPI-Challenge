@@ -5,7 +5,7 @@ import br.com.iteam.core.domain.entity.Product;
 import java.math.BigDecimal;
 import java.util.List;
 
-public interface SearchProducts {
+public interface SearchProductsUseCase {
     List<Product> search(String category,
                          BigDecimal minPrice,
                          BigDecimal maxPrice,
