@@ -22,14 +22,12 @@ a modular and flexible application adaptable to rapid changes.
 - [LinkedIn](www.linkedin.com/in/willianrsouza/)
 - [Machine Learning - Projects](https://dagshub.com/willianrsouza)
 
-
----
 ## Table of contents
-- [Applied Concepts](#Applied Concepts)
-  - [Clean Architecture](#Clean Architecture)
-  - [Modules Organization](#Modules Organization)
+- [Applied Concepts](#AppliedConcepts)
+    - [Clean Architecture](#CleanArchitecture)
+    - [Modules Organization](#ModulesOrganization)
 - [Technologies](#Technologies)
-- [Running the Project](#Running the Project)
+- [Running the Project](#RunningtheProject)
 - [Database](#Authorization)
 - [Endpoints](#Endpoints)
 - [Authenticate](#Authenticate)
