@@ -178,6 +178,7 @@ gradlew.bat bootRun
 - H2 Database Console: `http://localhost:8081/h2-console` (Configure using provided JDBC settings)
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
+
 ---
 
 ## Database
