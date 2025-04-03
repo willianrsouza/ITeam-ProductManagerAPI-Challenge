@@ -3,7 +3,6 @@ package br.com.iteam.infrastructure.controller;
 import static br.com.iteam.infrastructure.utils.Utilities.controllerLog;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.infrastructure.dto.response.BaseResponse;
-import br.com.iteam.infrastructure.dto.response.ErrorResponse;
 import br.com.iteam.infrastructure.dto.response.NotFoundResponse;
 import br.com.iteam.infrastructure.dto.response.SuccessResponse;
 import br.com.iteam.usecase.Category.FindAllCategoriesUseCase;

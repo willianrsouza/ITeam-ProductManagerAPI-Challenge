@@ -47,7 +47,7 @@ public class SecurityConfig {
                     authorizeConfig.anyRequest().authenticated();
                 })
                 .csrf(csrf -> csrf.disable())
-                .headers(headers -> headers.frameOptions(frame -> frame.disable())) // 🔥 Permite uso de frames para o H2 Console
+                .headers(headers -> headers.frameOptions(frame -> frame.disable()))
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))
                 .httpBasic();
 
