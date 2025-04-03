@@ -26,8 +26,8 @@ a modular and flexible application adaptable to rapid changes.
 ---
 ## Table of contents
 - [Applied Concepts](#Applied Concepts)
-  - [Clean Architecture](#Clean Architecture)
-  - [Modules Organization](#Modules Organization)
+- [Clean Architecture](#Clean Architecture)
+- [Modules Organization](#Modules Organization)
 - [Technologies](#Technologies)
 - [Running the Project](#Running the Project)
 - [Database](#Authorization)
