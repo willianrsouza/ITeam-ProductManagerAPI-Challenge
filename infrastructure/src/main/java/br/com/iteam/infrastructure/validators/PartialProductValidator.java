@@ -1,7 +1,6 @@
 package br.com.iteam.infrastructure.validators;
 
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
 @Component

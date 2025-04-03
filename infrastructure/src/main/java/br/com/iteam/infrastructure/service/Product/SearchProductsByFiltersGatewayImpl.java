@@ -15,6 +15,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.transaction.annotation.Transactional;
+import static br.com.iteam.infrastructure.utils.Utilities.serviceLog;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -35,6 +36,8 @@ public class SearchProductsByFiltersGatewayImpl implements SearchProductsByFilte
 
     @Override
     public List<Product> search(UUID category, BigDecimal minPrice, BigDecimal maxPrice, String sortBy, String order, int page, int pageSize) {
+        serviceLog.info("Starting searchProductsByFilters::SearchProductsByFiltersGatewayImpl");
+
         SearchProductsRequest request = new SearchProductsRequest(category, minPrice, maxPrice, sortBy, order, page, pageSize);
         ValidationResult requestValidation = searchProductsRequestValidator.validate(request);
 
@@ -47,6 +50,8 @@ public class SearchProductsByFiltersGatewayImpl implements SearchProductsByFilte
 
         Pageable pageable = PageRequest.of(page, pageSize, getSort(sortBy, order));
         Page<ProductEntity> productPage = productRepository.findByFilters(category, minPrice, maxPrice, pageable);
+
+        serviceLog.info("Done searchProductsByFilters::SearchProductsByFiltersGatewayImpl");
 
         return productMapper.toProductList(productPage.getContent());
     }

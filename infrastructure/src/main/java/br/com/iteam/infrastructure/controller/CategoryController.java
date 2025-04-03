@@ -58,6 +58,6 @@ public class CategoryController {
         Category category = findCategoryByIdUseCase.findById(id);
         controllerLog.info("Start findCategoryByIdUseCase::CategoryController");
 
-        return SuccessResponse.of(HttpStatus.NOT_FOUND.value(), category);
+        return SuccessResponse.of(HttpStatus.OK.value(), category);
     }
 }

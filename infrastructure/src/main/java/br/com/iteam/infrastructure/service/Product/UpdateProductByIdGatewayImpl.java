@@ -30,7 +30,8 @@ public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
 
     @Override
     public Product updateById(UUID id, Product existingProduct, Product productUpdateData) {
-        serviceLog.info("Starting updateById for Product ID: {}", id);
+        serviceLog.info("Starting updateById ID: {}::UpdateProductByIdGatewayImpl", id);
+
         ValidationResult validationResult = partialProductValidator.validate(productUpdateData);
 
         if (!validationResult.isValid()) {
@@ -44,7 +45,7 @@ public class UpdateProductByIdGatewayImpl implements UpdateProductByIdGateway {
 
         productRepository.save(mergedProduct);
 
-        serviceLog.info("Product with ID: {} successfully updated. ::UpdateProductByIdGatewayImpl", id);
+        serviceLog.info("Product with ID: {} successfully updated::UpdateProductByIdGatewayImpl", id);
         return productMapper.toProduct(mergedProduct);
     }
 }

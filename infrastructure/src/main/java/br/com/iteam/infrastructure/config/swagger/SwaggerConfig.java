@@ -15,7 +15,11 @@ import org.springframework.context.annotation.Configuration;
         info = @Info(
                 title = "ITeam::Product Management API",
                 version = "1.0",
-                description = "RESTful API for product management with role-based access control."
+                description = "This project was developed by Willian Souza to meet the requirements of the IT-EAM test (www.it-eam.com). The goal is to create a RESTful API for product management, allowing authenticated users to perform CRUD operations (Create, Read, Update, and Delete). The API includes robust validations and role-based access control.\n" +
+                        "\n" +
+                        "\uD83D\uDCE7 Email: willianrsouzawork@gmail.com\n" +
+                        "\uD83D\uDC19 GitHub: github.com/willianrsouza\n" +
+                        "\uD83D\uDD17 LinkedIn: www.linkedin.com/in/willianrsouza/"
         )
 )
 @SecurityScheme(

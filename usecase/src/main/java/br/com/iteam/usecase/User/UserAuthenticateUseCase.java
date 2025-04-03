@@ -1,5 +1,7 @@
 package br.com.iteam.usecase.User;
 
+import br.com.iteam.core.domain.entity.User;
+
 public interface UserAuthenticateUseCase {
-    Boolean authenticate(String email, String password);
+    User authenticate(String email, String password);
 }

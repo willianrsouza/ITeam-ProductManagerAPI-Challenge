@@ -1,7 +1,6 @@
 package br.com.iteam.application.usecase.Product;
 
 import br.com.iteam.application.gateway.Product.SearchProductsByFiltersGateway;
-import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
 import br.com.iteam.usecase.Product.SearchProductsByFiltersUseCase;

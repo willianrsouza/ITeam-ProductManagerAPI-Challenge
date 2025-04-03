@@ -3,7 +3,6 @@ package br.com.iteam.infrastructure.validators;
 import br.com.fluentvalidator.AbstractValidator;
 import br.com.iteam.infrastructure.dto.request.SearchProductsRequest;
 import org.springframework.stereotype.Component;
-
 import java.math.BigDecimal;
 
 @Component
