@@ -45,7 +45,7 @@ long-term adaptability and quality. This project was developed following this pa
 and technological independence, as only the outermost layer interacts with frameworks and libraries.
 </p>
 
-<div align="center"><a href="image/clean-architecture-cone.jfif"><img src="image/clean-architecture-cone.jfif" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
+<div align="center"><a href="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/clean-architecture-cone.jfif"><img src="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/clean-architecture-cone.jfif" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
 
 ## Clean Architecture
 
@@ -80,7 +80,7 @@ and technological independence, as only the outermost layer interacts with frame
 
 ## Modules Organization
 
-<div align="center"><a href="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/modules.png?token=GHSAT0AAAAAADAINYUEENFFPTHLRP4HGKTCZ7O3TZQ"><img src="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/modules.png?token=GHSAT0AAAAAADAINYUEENFFPTHLRP4HGKTCZ7O3TZQ" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
+<div align="center"><a href="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/modules.png"><img src="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/modules.png" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
 
 ### Core
 - `Entity`
