@@ -264,8 +264,8 @@ tools like Swagger is that the documentation remains constantly updated, ensurin
 with the latest API changes.
 </p>
 
-<div align="center"><a href="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/swagger.png?token=GHSAT0AAAAAADAINYUFRVJLI6DEBFUGTWTAZ7OZSBA">
-<img src="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/swagger.png?token=GHSAT0AAAAAADAINYUFRVJLI6DEBFUGTWTAZ7OZSBA" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
+<div align="center"><a href="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/swagger.png">
+<img src="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/swagger.png" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
 
 ## Product Endpoints
 
