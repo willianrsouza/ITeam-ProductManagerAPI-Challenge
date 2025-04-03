@@ -35,7 +35,7 @@ a modular and flexible application adaptable to rapid changes.
 
 # Applied Concepts
 
-**"_Uma arquitetura bem estruturada adia decisões, evitando escolhas prematuras e facilitando futuras mudanças." - Robert C. Martin_** 
+**"A well-structured architecture defers decisions, avoiding premature choices and making future changes easier." - Robert C. Martin** 
 
 <p align="justify">
 Clean Architecture has gained popularity for its ability to create flexible, scalable, and maintainable systems.
