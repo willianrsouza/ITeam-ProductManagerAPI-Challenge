@@ -80,6 +80,8 @@ and technological independence, as only the outermost layer interacts with frame
 
 ## Modules Organization
 
+<div align="center"><a href="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/modules.png?token=GHSAT0AAAAAADAINYUEENFFPTHLRP4HGKTCZ7O3TZQ"><img src="https://raw.githubusercontent.com/willianrsouza/ITeam-ProductManagerAPI-Challenge/refs/heads/master/image/modules.png?token=GHSAT0AAAAAADAINYUEENFFPTHLRP4HGKTCZ7O3TZQ" alt="Diagram showing IoT-to-Cloud (Nebula) network connections" style="width:70%;height:70%"/></a></div>
+
 ### Core
 - `Entity`
 - `Enums`
