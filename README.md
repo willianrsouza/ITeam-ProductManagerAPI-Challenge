@@ -125,7 +125,6 @@ and technological independence, as only the outermost layer interacts with frame
 - **Apache Commons Lang** - Additional utilities for Java development
 - **Fluent Validation** - Centralized and modular validation
 - **SpringDoc OpenAPI** - API documentation with Swagger UI
-- **JUnit 5** - Unit testing framework
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
 
