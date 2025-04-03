@@ -135,8 +135,9 @@ and technological independence, as only the outermost layer interacts with frame
 ### Prerequisites
 Ensure you have the following installed:
 - **Java 17** (or compatible version)
-- **Gradle** 
+- **Gradle**
 - **Git**
+- **Docker** (if you want to run the project using a container)
 
 ### Clone the Repository
 ```sh
@@ -148,7 +149,7 @@ cd ITeam-ProductManagerAPI-Challenge
 This project uses **H2 Database** for local development. If you want to use a different database (e.g., MySQL), update `application.yml` or `application.properties` accordingly.
 
 ### Run the Project
-Using **Gradle Wrapper**:
+#### Using **Gradle Wrapper**:
 ```sh
 ./gradlew bootRun
 ```
@@ -157,13 +158,26 @@ On Windows (PowerShell or Command Prompt):
 gradlew.bat bootRun
 ```
 
+#### Using **Docker**:
+1. Build the Docker image:
+   ```sh
+   docker build -t iteam-api .
+   ```
+2. Verify if the image was created:
+   ```sh
+   docker images
+   ```
+3. Run the container:
+   ```sh
+   docker run -p 8081:8081 iteam-api
+   ```
+
 ### Access the Application
 - API Base URL: `http://localhost:8081`
 - Swagger UI (API Documentation): `http://localhost:8081/swagger-ui/index.html`
 - H2 Database Console: `http://localhost:8081/h2-console` (Configure using provided JDBC settings)
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
-
 ---
 
 ## Database
@@ -224,31 +238,28 @@ CREATE TABLE Products (
 ```
 
 ## Initial Data
-Some initial data was inserted into the database for testing purposes.
-
 #### Insert Users
 ```sql
-INSERT INTO Users (Name, Email, Password, Role, IsActive, CreatedAt, UpdatedAt) VALUES
-    ('Willian Souza', 'admin@iteam.com',
-     '$2a$10$E62tvSFK0/ehdvF4CdzGUuI9x8veq/AQl5sAI1B/6CCu0UtANcqim',
-     'ROLE_ADMIN', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Tiago Ferreira', 'user@iteam.com',
-     '$2a$10$E62tvSFK0/ehdvF4CdzGUuI9x8veq/AQl5sAI1B/6CCu0UtANcqim',
-     'ROLE_USER', TRUE, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
+INSERT INTO Users (Id, Name, Email, Password, Role, IsActive, CreatedAt, UpdatedAt)
+VALUES
+  (UUID(), 'Willian Souza', 'admin@iteam.com',
+   '$2a$10$E62tvSFK0/ehdvF4CdzGUuI9x8veq/AQl5sAI1B/6CCu0UtANcqim',
+   'ROLE_ADMIN', TRUE, '2025-04-02 20:34:14.147028', '2025-04-02 20:34:14.147028'),
+  (UUID(), 'Tiago Ferreira', 'user@iteam.com',
+   '$2a$10$E62tvSFK0/ehdvF4CdzGUuI9x8veq/AQl5sAI1B/6CCu0UtANcqim',
+   'ROLE_USER', TRUE, '2025-04-02 20:34:14.147028', '2025-04-02 20:34:14.147028');
+
+
 ```
 
 #### Insert Categories
 ```sql
-INSERT INTO Categories (Name, CreatedAt, UpdatedAt) VALUES
-    ('Electronics', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Clothing', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
-    ('Food', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
-```
+INSERT INTO Categories (Id, Name, CreatedAt, UpdatedAt) 
+VALUES
+  (UUID(),'Electronics', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  (UUID(),'Clothing', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP),
+  (UUID(),'Food', CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 
-#### Insert Products
-```sql
-INSERT INTO Products (CategoryId, Name, Description, Price, Stock, CreatedAt, UpdatedAt) VALUES
-    ('c911976c-5488-4ffc-ae1e-e4e15a98d4d1', 'Laptop', 'Powerful laptop for work and gaming.', 1299.99, 30, CURRENT_TIMESTAMP, CURRENT_TIMESTAMP);
 ```
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
