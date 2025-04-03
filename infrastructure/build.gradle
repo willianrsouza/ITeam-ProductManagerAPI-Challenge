@@ -57,3 +57,7 @@ test {
 kotlin {
     jvmToolchain(17)
 }
+
+springBoot {
+    mainClass = 'br.com.iteam.infrastructure.Application'
+}

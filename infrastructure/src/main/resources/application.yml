@@ -14,6 +14,6 @@ spring:
         physical-strategy: org.hibernate.boot.model.naming.PhysicalNamingStrategyStandardImpl
 springdoc:
   api-docs:
-    path: /v3/api-docs  # Correct path for OpenAPI docs
+    path: /v3/api-docs
   swagger-ui:
-    path: /swagger-ui/  # Correct path for Swagger UI
+    path: /swagger-ui/
