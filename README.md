@@ -22,8 +22,6 @@ a modular and flexible application adaptable to rapid changes.
 - [LinkedIn](www.linkedin.com/in/willianrsouza/)
 - [Machine Learning - Projects](https://dagshub.com/willianrsouza)
 
-
----
 ## Table of contents
 - [Applied Concepts](#AppliedConcepts)
     - [Clean Architecture](#CleanArchitecture)
