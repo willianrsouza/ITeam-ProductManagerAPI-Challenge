@@ -4,6 +4,7 @@ import static br.com.iteam.infrastructure.utils.Utilities.controllerLog;
 import br.com.iteam.core.domain.entity.Category;
 import br.com.iteam.infrastructure.dto.response.BaseResponse;
 import br.com.iteam.infrastructure.dto.response.ErrorResponse;
+import br.com.iteam.infrastructure.dto.response.NotFoundResponse;
 import br.com.iteam.infrastructure.dto.response.SuccessResponse;
 import br.com.iteam.usecase.Category.FindAllCategoriesUseCase;
 import br.com.iteam.usecase.Category.FindCategoryByIdUseCase;
@@ -35,8 +36,8 @@ public class CategoryController {
     @Operation(summary = "Retrieve all categories", description = "Returns a list of all categories available in the system.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Categories retrieved successfully"),
-            @ApiResponse(responseCode = "404", description = "No categories found", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "No categories found", content = @Content(schema = @Schema(implementation = NotFoundResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<List<Category>> getAllCategories() {
         controllerLog.info("Start findAllCategoriesUseCase::CategoryController");
@@ -50,8 +51,8 @@ public class CategoryController {
     @Operation(summary = "Retrieve category by ID", description = "Returns a specific category based on the provided ID.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Category retrieved successfully"),
-            @ApiResponse(responseCode = "404", description = "Category not found", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Category not found", content = @Content(schema = @Schema(implementation = NotFoundResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<Category> findCategoryById(@PathVariable("id") UUID id) {
         controllerLog.info("Start findCategoryByIdUseCase::CategoryController");

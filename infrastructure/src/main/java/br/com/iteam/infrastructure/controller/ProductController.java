@@ -3,9 +3,7 @@ package br.com.iteam.infrastructure.controller;
 import br.com.iteam.core.domain.entity.Product;
 import br.com.iteam.infrastructure.dto.request.CreateProductRequest;
 import br.com.iteam.infrastructure.dto.request.UpdateProductRequest;
-import br.com.iteam.infrastructure.dto.response.BaseResponse;
-import br.com.iteam.infrastructure.dto.response.ErrorResponse;
-import br.com.iteam.infrastructure.dto.response.SuccessResponse;
+import br.com.iteam.infrastructure.dto.response.*;
 import br.com.iteam.infrastructure.mapper.ProductMapper;
 import br.com.iteam.usecase.Product.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -48,8 +46,9 @@ public class ProductController {
     @Operation(summary = "Create a new product", description = "Receives a product creation payload and registers it in the system.")
     @ApiResponses(value = {
             @ApiResponse(responseCode = "200", description = "Product successfully created"),
-            @ApiResponse(responseCode = "400", description = "Invalid request", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "400", description = "Invalid request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
+            @ApiResponse(responseCode = "403", description = "Forbidden - User does not have permission", content = @Content(schema = @Schema(implementation = ForbiddenResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<Product> createProduct(@Valid @RequestBody CreateProductRequest request) {
         controllerLog.info("Start createProductUseCase::ProductController");
@@ -65,9 +64,8 @@ public class ProductController {
     @Operation(summary = "Find product by ID", description = "Retrieves a product based on the provided ID.")
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Product found successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = NotFoundResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<Product> findProductById(@PathVariable UUID id) {
         controllerLog.info("Start findProductByIdUseCase::ProductController");
@@ -82,8 +80,9 @@ public class ProductController {
     @Operation(summary = "Delete product by ID", description = "Deletes a product based on the provided ID.")
     @ApiResponses({
             @ApiResponse(responseCode = "204", description = "Product successfully deleted"),
-            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "403", description = "Forbidden - User does not have permission", content = @Content(schema = @Schema(implementation = ForbiddenResponse.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = NotFoundResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<Boolean> deleteProductById(@PathVariable UUID id) {
         controllerLog.info("Start deleteProductByIdUseCase::ProductController");
@@ -99,7 +98,8 @@ public class ProductController {
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Product successfully updated"),
             @ApiResponse(responseCode = "400", description = "Invalid request", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = BaseResponse.class))),
+            @ApiResponse(responseCode = "403", description = "Forbidden - User does not have permission", content = @Content(schema = @Schema(implementation = ForbiddenResponse.class))),
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = NotFoundResponse.class))),
             @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<Product> updateProductById(@PathVariable UUID id, @Valid @RequestBody UpdateProductRequest request) {
@@ -119,8 +119,8 @@ public class ProductController {
     )
     @ApiResponses({
             @ApiResponse(responseCode = "200", description = "Products retrieved successfully"),
-            @ApiResponse(responseCode = "400", description = "Invalid request parameters", content = @Content(schema = @Schema(implementation = ErrorResponse.class))),
-            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = ErrorResponse.class)))
+            @ApiResponse(responseCode = "404", description = "Product not found", content = @Content(schema = @Schema(implementation = NotFoundResponse.class))),
+            @ApiResponse(responseCode = "500", description = "Internal server error", content = @Content(schema = @Schema(implementation = BaseResponse.class)))
     })
     public SuccessResponse<List<Product>> searchProductsByFilters(
             @RequestParam(required = false) UUID categoryId,
