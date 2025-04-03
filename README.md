@@ -35,7 +35,7 @@ a modular and flexible application adaptable to rapid changes.
 
 # Applied Concepts
 
-**"_Uma arquitetura bem estruturada adia decisões, evitando escolhas prematuras e facilitando futuras mudanças." - Robert C. Martin_** 
+**"A well-structured architecture defers decisions, avoiding premature choices and making future changes easier." - Robert C. Martin** 
 
 <p align="justify">
 Clean Architecture has gained popularity for its ability to create flexible, scalable, and maintainable systems.
@@ -125,7 +125,6 @@ and technological independence, as only the outermost layer interacts with frame
 - **Apache Commons Lang** - Additional utilities for Java development
 - **Fluent Validation** - Centralized and modular validation
 - **SpringDoc OpenAPI** - API documentation with Swagger UI
-- **JUnit 5** - Unit testing framework
 
 <div align="right"><kbd><a href="#table-of-contents">↑ Back to top ↑</a></kbd></div>
 
